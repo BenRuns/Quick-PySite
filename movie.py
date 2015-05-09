@@ -5,13 +5,14 @@ class Movie:
         self.poster_image_url = poster_image_url
         self.trailer_youtube_url = trailer_youtube_url
     	self.youtube_id()
-    def content(self):
-        return '''
+
+    def content_to_html(self):
+        return ('''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{self.trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" width="220" height="342">
-    <h2>{self.movie_title}</h2>
+    <img src="{self.poster_image_url}" width="220" height="342">
+    <h2>{self.title}</h2>
 </div>
-'''
+''').format(self = self)
 
     def youtube_id(self):
         youtube_id_match = re.search(r'(?<=v=)[^&#]+', self.trailer_youtube_url)
@@ -19,8 +20,7 @@ class Movie:
         self.trailer_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
 
 
-b = Movie()
-print b.content()
+
 #Takes an input
 
 
