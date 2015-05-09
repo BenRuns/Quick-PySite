@@ -25,3 +25,8 @@ update ratings
 view index.html
 
 This will use the open database
+
+How to run tests
+
+How to contribute
+
