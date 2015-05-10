@@ -1,14 +1,16 @@
 import re
+import urllib
 import urllib2
+import json
+import cgi
+cgi.escape
 
 class Movie:
     def __init__(self,title = '',
-        poster_image_url='',
         trailer_youtube_url = '', 
         imdbID =''):
 
         self.title = title
-        self.poster_image_url = poster_image_url
         self.trailer_youtube_url = trailer_youtube_url
         self.imdbID = imdbID
     	self.youtube_id()
@@ -17,7 +19,7 @@ class Movie:
     def content_to_html(self):
         return ('''
         <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{self.trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-            <img src="{self.poster_image_url}" width="220" height="342">
+            <img src="{self.omdb_data[Poster]}" width="220" height="342">
             <h2>{self.title}</h2>
         </div>
         ''').format(self = self)
@@ -31,16 +33,17 @@ class Movie:
         if self.imdbID:
             search_url = "http://www.omdbapi.com/?i=" + self.imdbID 
             response = urllib2.urlopen(search_url)
-            self.omdb_data = response.read()
+            self.omdb_data = json.loads(response.read())
         else:
             print "no imdbID present"
 
     @classmethod
     def search_omdb_by_title(self, title):
         #put a generator here
-        search_url = "http://www.omdbapi.com/?s=" + title
+
+        search_url = "http://www.omdbapi.com/?s=" + urllib.quote(title)
         response = urllib2.urlopen(search_url)
-        return response.read()
+        return json.loads(response.read())['Search']
 
 
 
