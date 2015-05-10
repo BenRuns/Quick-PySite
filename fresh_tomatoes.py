@@ -131,6 +131,19 @@ def load_movies(movies):
 	#movies is an array of dict
 	return [ Movie(**movie) for movie in movies ]
 
+def update_movies(path_to_yaml_file):
+	movies = load_movies(get_movies(path_to_yaml_file))
+	[ movie.get_omdb_data() for movie in movies]
+
+	updated = [ movie.nice_yaml() for movie in movies]
+	updated_yaml = yaml.dump({'movies': updated }, encoding=None, default_flow_style=False )
+
+	output_file = open(path_to_yaml_file, 'w')
+	output_file.write(updated_yaml)
+	output_file.close() 
+	
+
+
 
 
 
@@ -156,4 +169,4 @@ def open_movies_page(movies):
   url = os.path.abspath(output_file.name)
   webbrowser.open('file://' + url, new=2) # open in a new tab, if possible
 
-open_movies_page(load_movies(get_movies('movies.yaml')))
+print load_movies(get_movies('movies.yaml'))[0].title 

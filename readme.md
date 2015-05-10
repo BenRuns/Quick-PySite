@@ -12,8 +12,26 @@
 
 ### Running my project
 
+This was inspired by the blogging platform (jekyll)[jekyllrb.com] . Instead of using a database and serving pages dynamically. It builds several static pages locally before you deploy. This works great for small projects. The idea is that you don't really need a database for every site.
+
+### Dependencies
+-Python 2.7
+-PyYaml
+
+
 1. requires yaml .. install via pip PyYaml
 An example of the page is running at ...
+
+2. Update movies calls the omdb database and updates the data in the yaml file
+
+
+Command line:
+
+Add a movie,
+Delete a movie
+Run the server
+update all movies
+build
 
 should I use gulp to minifiy?
 

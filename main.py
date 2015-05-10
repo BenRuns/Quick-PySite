@@ -6,6 +6,7 @@ import SocketServer
 import webbrowser
 
 
+
 PORT = 8000
 Handler = BaseHTTPServer.BaseHTTPRequestHandler
 httpd = SocketServer.TCPServer(("", PORT), Handler)

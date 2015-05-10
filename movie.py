@@ -1,20 +1,27 @@
 import re
 import urllib
 import urllib2
-import json
+import json, ast
 import cgi
-cgi.escape
+import yaml
+
 
 class Movie:
     def __init__(self,title = '',
         trailer_youtube_url = '', 
-        imdbID =''):
+        imdbID ='',omdb_data=''):
 
         self.title = title
         self.trailer_youtube_url = trailer_youtube_url
         self.imdbID = imdbID
+        self.omdb_data = omdb_data
     	self.youtube_id()
-        self.get_omdb_data()
+
+    def nice_yaml(self):
+        return {'title': self.title, 
+        'trailer_youtube_url': self.trailer_youtube_url,
+        'imdbID': self.imdbID,
+        'omdb_data': ast.literal_eval(json.dumps(self.omdb_data)) }
 
     def content_to_html(self):
         return ('''
