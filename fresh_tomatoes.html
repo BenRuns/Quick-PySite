@@ -1,11 +1,4 @@
-import webbrowser
-import os
-import re
-import yaml
-from movie import *
 
-# Styles and scripting for the page
-main_page_head = '''
 <head>
     <meta charset="utf-8">
     <title>Fresh Tomatoes!</title>
@@ -82,13 +75,7 @@ main_page_head = '''
         });
     </script>
 </head>
-'''
-#Need to add some extra script to get info from the  open db
 
-
-
-# The main page layout and title bar
-main_page_content = '''
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -116,44 +103,12 @@ main_page_content = '''
       </div>
     </div>
     <div class="container">
-      {movie_tiles}
+      
+        <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="x27smbyCADQ" data-toggle="modal" data-target="#trailer">
+            <img src="http://ia.media-imdb.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX300.jpg" width="220" height="342">
+            <h2>Frozen</h2>
+        </div>
+        
     </div>
   </body>
 </html>
-'''
-def get_movies(path_to_yaml_file):
-	yaml_file = open(path_to_yaml_file)
-	movies = yaml.safe_load(yaml_file)
-	yaml_file.close()
-	return movies['movies']
-
-def load_movies(movies):
-	#movies is an array of dict
-	return [ Movie(**movie) for movie in movies ]
-
-
-
-
-def create_movie_tiles_content(movies):
-    # The HTML content for this section of the page
-    content = ''
-    for movie in movies:
-        content += movie.content_to_html()
-    return content
-
-def open_movies_page(movies):
-  # Create or overwrite the output file
-  output_file = open('fresh_tomatoes.html', 'w')
-
-  # Replace the placeholder for the movie tiles with the actual dynamically generated content
-  rendered_content = main_page_content.format(movie_tiles=create_movie_tiles_content(movies))
-
-  # Output the file
-  output_file.write(main_page_head + rendered_content)
-  output_file.close()
-
-  # open the output file in the browser
-  url = os.path.abspath(output_file.name)
-  webbrowser.open('file://' + url, new=2) # open in a new tab, if possible
-
-open_movies_page(load_movies(get_movies('movies.yaml')))

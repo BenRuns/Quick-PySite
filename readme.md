@@ -12,6 +12,7 @@
 
 ### Running my project
 
+1. requires yaml .. install via pip PyYaml
 An example of the page is running at ...
 
 should I use gulp to minifiy?
