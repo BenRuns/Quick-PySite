@@ -1,0 +1,17 @@
+models:
+    movies: 
+        format: yaml
+        page:  [index, individual]
+        template: path_to_template
+        include:
+            thing: ok
+        sort: none
+    blogs:
+        format: markdown
+        template: path_to_template
+        include: stuff
+
+structure:
+    - root:
+        model: movies
+        page: index

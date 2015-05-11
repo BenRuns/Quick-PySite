@@ -1,9 +1,15 @@
 import fresh_tomatoes 
 from models.movie import * 
+from lib.site import *
 import os
 import SimpleHTTPServer
 import SocketServer
 import webbrowser
+
+manifest = open('manifest.yml')
+print yaml.safe_load(manifest)
+SITE = Website(yaml.safe_load(manifest))
+manifest.close()
 
 def start_server(port=8000 ):
     PORT = port 
@@ -73,7 +79,8 @@ What would you like to do?"
             pass
         action()
 
-redirect()
+print SITE.data
+#redirect()
 #story - 
     # A user wants to upload some more movies
     # they go into the directory and run .. something
