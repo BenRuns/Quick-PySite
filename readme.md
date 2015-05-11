@@ -18,6 +18,51 @@ This was inspired by the blogging platform (jekyll)[jekyllrb.com] . Instead of u
 -Python 2.7
 -PyYaml
 
+#story - 
+	A user wants to upload some more movies
+	they go into the directory and run .. something
+
+	The site says "What would you like to do?"
+
+	Buid the site? build
+
+	get omdb update for current movies:
+		update
+	Add a movie? 
+		add
+	Edit Current movies? 
+		edit
+
+
+
+	User types in add
+
+	"Enter the title:""
+
+
+	"user enters title"
+
+	" it returns a list "(only type movie)
+	"is this your movie?"
+		no
+	"shows next"
+		yes
+	"What is the youtube url for the trailer you want to add?"
+		enters blank
+	"Can't be blank"
+		enters "boo"
+	"Must be in http format"
+		enters "http://sdfasf.com"
+	Thank you? 
+		add another
+		build
+		main menu
+		exit
+
+
+
+
+
 
 1. requires yaml .. install via pip PyYaml
 An example of the page is running at ...

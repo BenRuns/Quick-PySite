@@ -171,4 +171,4 @@ def open_movies_page(movies):
   url = os.path.abspath(output_file.name)
   webbrowser.open('file://' + url, new=2) # open in a new tab, if possible
 
-open_movies_page(load_movies(get_movies('movies.yaml')))
+#open_movies_page(load_movies(get_movies('movies.yaml')))

@@ -9,24 +9,32 @@ import yaml
 class Movie:
     def __init__(self,title = '',
         trailer_youtube_url = '', 
-        imdbID ='',omdb_data=''):
+        imdbID ='',
+        omdb_data='',
+        poster_url=''):
 
         self.title = title
         self.trailer_youtube_url = trailer_youtube_url
         self.imdbID = imdbID
         self.omdb_data = omdb_data
-    	self.youtube_id()
+        if poster_url == '' and "Poster" in self.omdb_data.keys():
+    	   self.poster_url = self.omdb_data["Poster"]
+        else:
+            self.poster_url = poster_url
+        self.youtube_id()
+
 
     def nice_yaml(self):
         return {'title': self.title, 
         'trailer_youtube_url': self.trailer_youtube_url,
         'imdbID': self.imdbID,
+        'poster_url': self.poster_url,
         'omdb_data': ast.literal_eval(json.dumps(self.omdb_data)) }
 
     def content_to_html(self):
         return ('''
         <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{self.trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-            <img src="{self.omdb_data[Poster]}" width="220" height="342">
+            <img src="{self.poster_url}" width="220" height="342">
             <h2>{self.title}</h2>
         </div>
         ''').format(self = self)
@@ -50,7 +58,29 @@ class Movie:
 
         search_url = "http://www.omdbapi.com/?s=" + urllib.quote(title)
         response = urllib2.urlopen(search_url)
-        return json.loads(response.read())['Search']
+        try: 
+            results = json.loads(response.read())["Search"]
+        except: 
+            results = []
+        return results
+
+    @classmethod
+    def choose_from_results(self,results):
+        num = [-1]
+        movie_data = None
+        def next_movie():
+            num[0] += 1
+            return results[num[0]]         
+        while len(results) -1  > num[0]:
+            current_movie = next_movie()
+            for  key,value in  current_movie.iteritems():
+                print ( key + ': ' + value )
+            ismovie = raw_input("Is this your movie: Yes/No ? ")
+            if len(ismovie) >= 1 and ismovie.lower()[0] == "y":
+                movie_data = current_movie
+                break
+            print "----------------------------"
+        return movie_data
 
 
 
