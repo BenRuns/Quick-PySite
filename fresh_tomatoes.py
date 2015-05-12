@@ -123,16 +123,6 @@ main_page_content = '''
 '''
 
 
-def get_movies(path_to_yaml_file):
-	yaml_file = open(path_to_yaml_file)
-	movies = yaml.safe_load(yaml_file)
-	yaml_file.close()
-	return movies['movies']
-
-def load_movies(movies):
-	#reurns a list of 
-	return [ Movie(**movie) for movie in movies ]
-
 def update_movies(path_to_yaml_file):
 	#This updates the omdb data 
 	movies = load_movies(get_movies(path_to_yaml_file))

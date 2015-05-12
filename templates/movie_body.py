@@ -1,16 +1,5 @@
-<head>
-    <meta charset="utf-8">
-    <title>Fresh Tomatoes!</title>
 
-    <!-- Bootstrap 3 -->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-
-</head>
-'
+"""
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -42,4 +31,4 @@
     </div>
   </body>
 </html>
-'''
+"""

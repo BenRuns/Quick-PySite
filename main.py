@@ -99,7 +99,7 @@ What would you like to do?"
             print "That was not a valid choice try again"
         else:
             pass
-        action()
+    action()
 
 #print SITE.data['movies']['tt2294629'].nice_yaml()
 redirect()

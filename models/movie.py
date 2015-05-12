@@ -40,11 +40,11 @@ class Movie:
 
 
     def nice_yaml(self):
-        return {'title': self.title, 
-        'index': self.index,
+        return {'title': str(self.title), 
+        'index': str(self.index),
         'trailer_youtube_url': self.trailer_youtube_url,
-        'imdbID': self.imdbID,
-        'poster_url': self.poster_url,
+        'imdbID': str(self.imdbID),
+        'poster_url': str(self.poster_url),
         'omdb_data': ast.literal_eval(json.dumps(self.omdb_data)) }
 
     def content_to_html(self):
@@ -78,7 +78,7 @@ class Movie:
             results = json.loads(response.read())["Search"]
         except: 
             results = []
-        return results
+        return results   
 
     @classmethod
     def choose_from_results(self,results):
@@ -91,7 +91,7 @@ class Movie:
             current_movie = next_movie()
             for  key,value in  current_movie.iteritems():
                 print ( key + ': ' + value )
-            ismovie = raw_input("Is this your movie: Yes/No ? ")
+            ismovie = raw_input("Is this your movie?: Yes/No  ")
             if len(ismovie) >= 1 and ismovie.lower()[0] == "y":
                 movie_data = current_movie
                 break
