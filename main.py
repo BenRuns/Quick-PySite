@@ -101,8 +101,9 @@ What would you like to do?"
             pass
     action()
 
-#print SITE.data['movies']['tt2294629'].nice_yaml()
-redirect()
+print SITE.build_page('./templates/application/header.yml')
+#redirect()
+
 #story - 
     # A user wants to upload some more movies
     # they go into the directory and run .. something
