@@ -4,6 +4,7 @@ import urllib2
 import json, ast
 import cgi
 import yaml
+import uuid
 
 
 class Movie:
@@ -11,21 +12,36 @@ class Movie:
         trailer_youtube_url = '', 
         imdbID ='',
         omdb_data='',
-        poster_url=''):
-
+        poster_url='',
+        index =''):
         self.title = title
         self.trailer_youtube_url = trailer_youtube_url
         self.imdbID = imdbID
-        self.omdb_data = omdb_data
+        if omdb_data == '':
+            self.omdb_data = {}
+            self.get_omdb_data()
+        else:
+            self.omdb_data = omdb_data
+        if index == '' and 'imdbID' in self.omdb_data.keys():
+            self.index = self.omdb_data['imdbID']
+        elif index != '':
+            self.index = index
+        else:
+            index = uuid.uuid4()
+            self.index =  str(index)
         if poster_url == '' and "Poster" in self.omdb_data.keys():
     	   self.poster_url = self.omdb_data["Poster"]
         else:
             self.poster_url = poster_url
         self.youtube_id()
 
+    def table(self):
+        return (self.__class__.__name__).lower() + 's'
+
 
     def nice_yaml(self):
         return {'title': self.title, 
+        'index': self.index,
         'trailer_youtube_url': self.trailer_youtube_url,
         'imdbID': self.imdbID,
         'poster_url': self.poster_url,
@@ -82,8 +98,8 @@ class Movie:
             print "----------------------------"
         return movie_data
 
-
-
+class Blog(Movie):
+    pass
 #Takes an input
 
 

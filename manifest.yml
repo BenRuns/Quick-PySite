@@ -3,15 +3,17 @@ models:
         format: yaml
         page:  [index, individual]
         template: path_to_template
+        index_on:  imdbID
         include:
             thing: ok
         sort: none
     blogs:
+        index_on: date_time
         format: markdown
         template: path_to_template
         include: stuff
 
 structure:
-    - root:
+    root:
         model: movies
         page: index

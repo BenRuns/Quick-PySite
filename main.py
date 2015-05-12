@@ -6,10 +6,13 @@ import SimpleHTTPServer
 import SocketServer
 import webbrowser
 
-manifest = open('manifest.yml')
-print yaml.safe_load(manifest)
-SITE = Website(yaml.safe_load(manifest))
-manifest.close()
+def load_manifest(path_to_file):
+    config_file = open(path_to_file)
+    manifest = yaml.safe_load(config_file)
+    config_file.close()
+    return manifest
+
+SITE = Website(**load_manifest('manifest.yml'))
 
 def start_server(port=8000 ):
     PORT = port 
@@ -35,14 +38,33 @@ def edit_movie():
 
 
 def add_movie():
+    movie_data = {}
     while True:
-        title = raw_input('Enter a movie title: ')
-        if len(title.strip()) == 0:
+        movie_data['title'] = raw_input('Enter a movie title: ')
+        if len(movie_data['title'].strip()) == 0:
             print "Title can't be blank"
         else:
             break
-    results = Movie.search_omdb_by_title(title)
-    omdb_data = Movie.choose_from_results(results)
+    results = Movie.search_omdb_by_title(movie_data['title'])
+    choice  = Movie.choose_from_results(results)
+    if choice == None:
+        while True:
+            movie_data['poster_url'] = raw_input('Enter a poster url: ')
+            if len(movie_data['poster_url'].strip()) == 0:
+                print "Poster url can't be blank"
+            else:
+                break
+    else:
+        movie_data['imdbID'] = choice['imdbID']
+    while True:
+        movie_data['trailer_youtube_url'] = raw_input('Enter a url from youtube for the trailer: ')
+        if len(movie_data['trailer_youtube_url'].strip()) == 0:
+            print "youtube url can't be blank"
+        else:
+            break
+    new_movie = Movie(**movie_data)
+    SITE.add_model(new_movie)
+    print SITE.data['movies']
 
 
 
@@ -79,8 +101,8 @@ What would you like to do?"
             pass
         action()
 
-print SITE.data
-#redirect()
+#print SITE.data['movies']['tt2294629'].nice_yaml()
+redirect()
 #story - 
     # A user wants to upload some more movies
     # they go into the directory and run .. something
