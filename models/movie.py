@@ -54,8 +54,18 @@ class Movie:
         <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{self.trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
             <img src="{self.poster_url}" width="220" height="342">
             <h2>{self.title}</h2>
+            <h4><a href={link}>More Details</a></h4>
         </div>
-        ''').format(self = self)
+        ''').format(self = self, link = '/movies/' + self.index + '.html')
+
+    def get_html_omdb_data(self):
+        outline = '<div col-md-6 col-lg-8 ><ul class="media-list">{content}</ul></div>'
+        content = '<li><div class="media-body"><h4 class="media-heading">Details from the open movie database</h4></div></li>'
+        for key,value in self.omdb_data.iteritems():
+            line = '<li><div class="media-body"><h4 class="media-heading" >' + key + ': </h4><span>' + value + '</span></div</li>' 
+            content += line
+
+        return '<div col-md-6 col-lg-8 ><ul>{content}</ul>"</div>'.format(content = content)
 
     def youtube_id(self):
         youtube_id_match = re.search(r'(?<=v=)[^&#]+', self.trailer_youtube_url)

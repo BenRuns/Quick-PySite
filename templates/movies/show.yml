@@ -1,7 +1,7 @@
 header: 'application/header'
-type: all
-file_name: index.html 
-destination: '/'
+type: each
+file_name: self
+destination: '/movies/'
 
 
 body: <!DOCTYPE html>
@@ -31,6 +31,7 @@ body: <!DOCTYPE html>
         </div>
         <div class="container">
           {content}
+          {details}
         </div>
       </body>
     </html>

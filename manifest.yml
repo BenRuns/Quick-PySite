@@ -2,8 +2,8 @@ models:
     movies: 
         format: yaml
         classname: Movie
-        page:  [index, show ]
-        template: './templates/movies/index.yml'
+        index_on: imdbID
+        templates:  [ index, show ]
         index_on:  imdbID
         include:
             thing: ok

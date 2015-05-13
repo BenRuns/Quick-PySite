@@ -17,26 +17,25 @@ class Website:
         self.process_models()  
 
         #goes through the data and loads it 
-    def load_db(self, model_with_s):
+    def load_db(self, model_table):
         """ this goes through the data folder and instantiates the yaml files into their 
         respective model classes and builds a temporary db attached to the self.data field """
-        path_to_data = 'data/' + model_with_s + '/data.yml'
-        self.data[model_with_s ] = {}
+        path_to_data = 'data/' + model_table + '/data.yml'
+        self.data[model_table ] = {}
         f = open(path_to_data)
         model_data = yaml.safe_load(f)
         f.close()
         #TODO get rid of eval below... it is bad ... the Internet says so
         #try and find source code that has a similar problem
-        model_class = eval(model_with_s[:-1].capitalize())
+        model_class = eval(model_table[:-1].capitalize())
         if model_data:
             for data in model_data:
                 self.add_model_to_site_table(model_class(**data)) 
 
     def process_models(self):
-        models =  [  [ key, self.model_reference[key]['template'],
-         self.model_reference[key]['index_on'] ] for key,value in self.model_reference.iteritems() ]
+        models =  [ key  for key,value in self.model_reference.iteritems() ]
         for model in models:
-            self.load_db(model[0])
+            self.load_db(model)
 
     def add_model_to_site_table(self,model_instance):
         table = model_instance.table()
@@ -98,9 +97,9 @@ class Website:
         ['stylesheet', 'link', "https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"]
         """
         instructions = {'stylesheet': {'link':'        <link rel="stylesheet" href="{location}">\n',
-                                       'local':'        <link rel="stylesheet" href="css/{location}">\n' } ,
+                                       'local':'        <link rel="stylesheet" href="/css/{location}">\n' } ,
                             'script': {'link':'        <script src="{location}"></script>\n',
-                                       'local':'        <script src="script/{location}"></script>\n' } 
+                                       'local':'        <script src="/script/{location}"></script>\n' } 
                         }
         content = '\n'               
         for asset in template['assets']:
@@ -111,8 +110,10 @@ class Website:
     def build_head(self,template):
         outline = """
         <head>
+            <base href="~/">
             <meta charset="utf-8">
             {data}
+
         </head>
         """
         data = self.title(template)
@@ -126,18 +127,41 @@ class Website:
         template = self.get_template(path_to_template)
         path_to_header_template = "./templates/" + template['header'] + '.yml'
         header_template = self.get_template(path_to_header_template)
-        content = model.get_index_content(self.data[model.table()])
-        page = self.build_head(header_template)
-        page += template['body'].format(content = content)
-        destination = "./public" + template['destination'] + template['file_name']
+        if template['type'] == 'all':
+            page = self.build_head(header_template)
+            content = model.get_index_content(self.data[model.table()])
+            page += template['body'].format(content = content)
+            destination = "./public" + template['destination'] + template['file_name']
+            self.write_file(destination, page)
+        elif template['type'] == 'each':
+            os.mkdir('./public/' + model.table())
+            for key,value in self.data[model.table()].iteritems():
+                page = self.build_head(header_template)
+                content = value.content_to_html()
+                details = value.get_html_omdb_data()
+                page += template['body'].format(content = content, details = details)
+                destination = "./public" + template['destination'] + value.index + '.html'
+                self.write_file(destination, page)
+
+        else:
+            print "build failed template type not specified"
+
+
+    def write_file(self, destination, page):    
         with open(destination, 'w') as new_file:
             new_file.write(page)
             new_file.close()
 
     def build_all(self):
+        self.make_assets_public()
         for key,models in self.model_reference.iteritems():
             model = eval(models['classname'])
-            path_to_template = models['template'] 
+            self.process_templates(models['templates'], model)
+
+
+    def process_templates(self, templates, model):
+        for template in templates:
+            path_to_template = 'templates/' + model.table() + '/' +  template + '.yml'
             self.build_page(path_to_template,model)
 
         
