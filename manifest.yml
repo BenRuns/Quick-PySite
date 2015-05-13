@@ -1,0 +1,16 @@
+models:
+    movies: 
+        format: yaml
+        classname: Movie
+        index_on: imdbID
+        templates:  [ index, show ]
+        index_on:  imdbID
+        include:
+            thing: ok
+        sort: none
+
+
+structure:
+    root:
+        model: movies
+        page: index
