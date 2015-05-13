@@ -96,8 +96,7 @@ class Movie:
 
             content += line
 
-        return outline.format(
-            content=content)
+        return outline.format(content=content)
 
     def youtube_id(self):
         youtube_id_match = re.search(

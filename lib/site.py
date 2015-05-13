@@ -97,8 +97,8 @@ class Website:
         """
         processes the assets listed in the template
         each asset is in the below format
-         asset[0] is either a stylesheet or a scripe
-         asset[1] signifies an external link or external link
+         asset[0] is either a stylesheet or a script
+         asset[1] signifies an internal assset or external link
          asset[2] is the external file or local file name
         ['stylesheet', 'link', "https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"]
         """
