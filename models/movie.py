@@ -96,11 +96,7 @@ class Movie:
 
             content += line
 
-        return '''<div col-md-6 col-lg-8 >
-                        <ul>
-                            {content}
-                        </ul>
-                    </div>'''.format(
+        return outline.format(
             content=content)
 
     def youtube_id(self):
