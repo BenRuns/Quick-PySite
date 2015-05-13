@@ -14,7 +14,9 @@ def load_manifest(path_to_file):
 
 SITE = Website(**load_manifest('manifest.yml'))
 
+
 def start_server(port=8000 ):
+    SITE.build_all()
     PORT = port 
     Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
     httpd = SocketServer.TCPServer(("", PORT), Handler)
@@ -25,7 +27,7 @@ def start_server(port=8000 ):
 
 
     print "serving at port", PORT
-    webbrowser.open('http://127.0.0.1:' + str(PORT) )
+    webbrowser.open('http://localhost:' + str(PORT) )
     httpd.serve_forever()
 
 
@@ -64,13 +66,13 @@ def add_movie():
             break
     new_movie = Movie(**movie_data)
     SITE.add_model(new_movie)
-    print SITE.data['movies']
+    redirect()
 
 
 
 
 
-choices = {'build': start_server, 
+choices = {'serve': start_server, 
            'update':update_movies,
            'edit':edit_movie,
            'add': add_movie }
@@ -81,7 +83,7 @@ def redirect():
 
 What would you like to do?"
 
-  Build the site?  --  enter   "build"
+  Go to the site?  --  enter   "serve"
 
   Refresh current movies 
   data through omdb? ---  enter "update"  
@@ -101,8 +103,8 @@ What would you like to do?"
             pass
     action()
 
-print SITE.build_page('./templates/application/header.yml')
-#redirect()
+
+redirect()
 
 #story - 
     # A user wants to upload some more movies

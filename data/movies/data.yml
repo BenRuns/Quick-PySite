@@ -28,31 +28,91 @@
   poster_url: http://ia.media-imdb.com/images/M/MV5BMjA4MDUzNDk4N15BMl5BanBnXkFtZTcwNDYyMjA0Mg@@._V1_SX300.jpg
   title: Cat on A Hot Tin Roof
   trailer_youtube_url: https://www.youtube.com/watch?v=rDk0JtQHc0A
-- imdbID: tt0173840
-  index: tt0173840
+  
+- imdbID: tt2294629
+  index: tt2294629
   omdb_data:
-    Actors: Ming-Na Wen, Alec Baldwin, Ving Rhames, Steve Buscemi
-    Awards: 1 win & 6 nominations.
-    Country: USA, Japan
-    Director: Hironobu Sakaguchi, Motonori Sakakibara
-    Genre: Animation, Action, Adventure
-    Language: English
-    Metascore: '49'
-    Plot: A scientist makes a last stand on Earth with the help of a ragtag team of
-      soldiers against an invasion of alien phantoms.
-    Poster: http://ia.media-imdb.com/images/M/MV5BMTkwODY0MzY5M15BMl5BanBnXkFtZTYwOTY5Mjg5._V1_SX300.jpg
-    Rated: PG-13
-    Released: 11 Jul 2001
+    Actors: Kristen Bell, Idina Menzel, Jonathan Groff, Josh Gad
+    Awards: Won 2 Oscars. Another 74 wins & 52 nominations.
+    Country: USA
+    Director: Chris Buck, Jennifer Lee
+    Genre: Animation, Adventure, Comedy
+    Language: English, Icelandic
+    Metascore: '74'
+    Plot: When the newly crowned Queen Elsa accidentally uses her power to turn things
+      into ice to curse her home in infinite winter, her sister, Anna, teams up with
+      a mountain man, his playful reindeer, and a snowman to change the weather condition.
+    Poster: http://ia.media-imdb.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX300.jpg
+    Rated: PG
+    Released: 27 Nov 2013
     Response: 'True'
-    Runtime: 106 min
-    Title: 'Final Fantasy: The Spirits Within'
+    Runtime: 102 min
+    Title: Frozen
     Type: movie
-    Writer: Hironobu Sakaguchi (story), Al Reinert, Jeff Vintar, Jack Fletcher (additional
-      dialogue), Ramin Mebdy (Farsi adaptation)
-    Year: '2001'
-    imdbID: tt0173840
-    imdbRating: '6.4'
-    imdbVotes: '68585'
-  poster_url: http://ia.media-imdb.com/images/M/MV5BMTkwODY0MzY5M15BMl5BanBnXkFtZTYwOTY5Mjg5._V1_SX300.jpg
-  title: Final
-  trailer_youtube_url: ok
+    Writer: Jennifer Lee (screenplay), Hans Christian Andersen (inspired by the story
+      "The Snow Queen" by), Chris Buck (story), Jennifer Lee (story), Shane Morris
+      (story), Dean Wellins (additional story)
+    Year: '2013'
+    imdbID: tt2294629
+    imdbRating: '7.7'
+    imdbVotes: '339336'
+  poster_url: http://ia.media-imdb.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX300.jpg
+  title: Frozen
+  trailer_youtube_url: https://www.youtube.com/watch?v=TbQm5doF_Uc
+  
+- imdbID: tt0497137
+  index: tt0497137
+  omdb_data:
+    Actors: Su-jeong Lim, Rain, Hie-jin Choi, Byeong-ok Kim
+    Awards: 7 wins & 5 nominations.
+    Country: South Korea
+    Director: Chan-wook Park
+    Genre: Comedy, Drama, Romance
+    Language: Korean
+    Metascore: N/A
+    Plot: A girl who thinks she is a combat cyborg checks into a mental hospital,
+      where she encounters other psychotics. Eventually, she falls for a man who thinks
+      he can steal people's souls.
+    Poster: http://ia.media-imdb.com/images/M/MV5BMTAwMjQ0NjQzMTReQTJeQWpwZ15BbWU4MDEyNjg3NTIx._V1_SX300.jpg
+    Rated: NOT RATED
+    Released: 7 Dec 2006
+    Response: 'True'
+    Runtime: 105 min
+    Title: I'm a Cyborg, But That's OK
+    Type: movie
+    Writer: Seo-Gyeong Jeong, Chan-wook Park
+    Year: '2006'
+    imdbID: tt0497137
+    imdbRating: '7.1'
+    imdbVotes: '16475'
+  poster_url: http://ia.media-imdb.com/images/M/MV5BMTAwMjQ0NjQzMTReQTJeQWpwZ15BbWU4MDEyNjg3NTIx._V1_SX300.jpg
+  title: I'm a Cyborg, But That's OK
+  trailer_youtube_url: https://www.youtube.com/watch?v=1KaOLDZe2GI
+- imdbID: tt0111161
+  index: tt0111161
+  omdb_data:
+    Actors: Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler
+    Awards: Nominated for 7 Oscars. Another 16 wins & 16 nominations.
+    Country: USA
+    Director: Frank Darabont
+    Genre: Crime, Drama
+    Language: English
+    Metascore: '80'
+    Plot: Two imprisoned men bond over a number of years, finding solace and eventual
+      redemption through acts of common decency.
+    Poster: http://ia.media-imdb.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_SX300.jpg
+    Rated: R
+    Released: 14 Oct 1994
+    Response: 'True'
+    Runtime: 142 min
+    Title: The Shawshank Redemption
+    Type: movie
+    Writer: Stephen King (short story "Rita Hayworth and Shawshank Redemption"), Frank
+      Darabont (screenplay)
+    Year: '1994'
+    imdbID: tt0111161
+    imdbRating: '9.3'
+    imdbVotes: '1445154'
+  poster_url: http://ia.media-imdb.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_SX300.jpg
+  title: The Shawshank Redemption
+  trailer_youtube_url: https://www.youtube.com/watch?v=RQSmfzfg2MY

@@ -33,10 +33,12 @@ class Movie:
     	   self.poster_url = self.omdb_data["Poster"]
         else:
             self.poster_url = poster_url
+        if "Title" in self.omdb_data.keys():
+           self.title = self.omdb_data["Title"]
         self.youtube_id()
-
+    @classmethod
     def table(self):
-        return (self.__class__.__name__).lower() + 's'
+        return 'movies'
 
 
     def nice_yaml(self):
@@ -98,31 +100,16 @@ class Movie:
             print "----------------------------"
         return movie_data
 
+    @classmethod
+    def get_index_content(self, data):
+        content = ''
+        for key,movie in data.iteritems():
+            content += movie.content_to_html()
+        return content
+
 class Blog(Movie):
     pass
-#Takes an input
 
-
-#makes a class, adds it to file
-
-#writes it to a hash
-
-#has a search option to ... edit the movie
-
-#puts movie into a hash in another file as YAML!
-#YAML DB!
-
-#create_movie
-
-
-#edit_movie
-
-
-#delete_movie
-
-
-
-#has an update all movies option
 
 
 

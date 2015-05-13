@@ -1,10 +1,14 @@
 import yaml
 import json
 from models.movie import *
+import shutil
+import os
 
 
 class Website:
-    """This is the main object for the website  """
+    """This is the main object for the website when the it is responsible 
+    the database is loaded as self.data it is also responsible for building out assets
+    and individual pages  """
     def __init__(self, models='', structure='') :
         self.data = {}
         self.model_reference = models
@@ -66,6 +70,19 @@ class Website:
             template = yaml.load(template_file.read())
             template_file.close() 
         return template
+    def clean_public_folder(self):
+        """THIS DELETES ALL THE ASSETS IN THE PUBLIC FOLDER
+
+        """
+        #TODO find a more elegant solution
+        shutil.rmtree('./public/')
+        os.mkdir('./public/')
+
+    def make_assets_public(self):
+        self.clean_public_folder()
+        #TODO add some minifying here
+        shutil.copytree('./assets/css', './public/css')
+        shutil.copytree('./assets/script', './public/script')
 
 
     def title(self,template):
@@ -83,7 +100,7 @@ class Website:
         instructions = {'stylesheet': {'link':'        <link rel="stylesheet" href="{location}">\n',
                                        'local':'        <link rel="stylesheet" href="css/{location}">\n' } ,
                             'script': {'link':'        <script src="{location}"></script>\n',
-                                       'local':'        <script src="js/{location}"></script>\n' } 
+                                       'local':'        <script src="script/{location}"></script>\n' } 
                         }
         content = '\n'               
         for asset in template['assets']:
@@ -104,17 +121,23 @@ class Website:
 
         
 
-    def build_page(self,path_to_template):
-        """ builds the site to public according to the manifest """
+    def build_page(self,path_to_template, model):
+        """ builds a single page from a yaml template  """
         template = self.get_template(path_to_template)
-        return self.build_head(template)
-        #goes through the assets and makes them public
+        path_to_header_template = "./templates/" + template['header'] + '.yml'
+        header_template = self.get_template(path_to_header_template)
+        content = model.get_index_content(self.data[model.table()])
+        page = self.build_head(header_template)
+        page += template['body'].format(content = content)
+        destination = "./public" + template['destination'] + template['file_name']
+        with open(destination, 'w') as new_file:
+            new_file.write(page)
+            new_file.close()
 
-        #builds each model via template
-            #builds the head according to the head
-            #adds assets according to the assets
-            #format the body
-
-
+    def build_all(self):
+        for key,models in self.model_reference.iteritems():
+            model = eval(models['classname'])
+            path_to_template = models['template'] 
+            self.build_page(path_to_template,model)
 
         
