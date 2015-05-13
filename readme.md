@@ -21,7 +21,7 @@ This was inspired by the blogging platform [jekyll](jekyllrb.com) and created as
 
 ### How this works
 
-When you add a site in the command line. The program contacts the (Open movie database api)[http://www.omdbapi.com/] and searches for your movie by title.  If your movie is in the results, the program makes another call to the omdb and gets a complete set of data(except for the youtube trailer url). If not, saves the information that you enter manually.  If you want to add more fields, you'll have to change the details in `data/movies/data.yml`
+When you add a site in the command line. The program contacts the [Open movie database api](http://www.omdbapi.com/) and searches for your movie by title.  If your movie is in the results, the program makes another call to the omdb and gets a complete set of data(except for the youtube trailer url). If not, saves the information that you enter manually.  If you want to add more fields, you'll have to change the details in `data/movies/data.yml`
 
 ### Making changes
 
