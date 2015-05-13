@@ -1,96 +1,36 @@
-###Udacity Project Instructions
-1. Install Python.
-
-2. Create a data structure (i.e. a Python Class) to store your favorite movies, including movie title, box art URL (or poster URL) and a YouTube link to the movie trailer.
-
-3. Create multiple instances of that Python Class to represent your favorite movies; group all the instances together in a list.
-
-4. To help you generate a website that displays these movies, we have provided a Python module called [fresh_tomatoes.py](https://s3.amazonaws.com/udacity-hosted-downloads/ud036/fresh_tomatoes.py) - this module has a function called open_movies_page that takes in one argument, which is a list of movies and creates an HTML file which visualizes all of your favorite movies.
-
-5. Ensure your website renders correctly when you attempt to load it in a browser.
 
 
-### Running my project
+### Quick PySite
 
-This was inspired by the blogging platform (jekyll)[jekyllrb.com] . Instead of using a database and serving pages dynamically. It builds several static pages locally before you deploy. This works great for small projects. The idea is that you don't really need a database for every site.
+This was inspired by the blogging platform [jekyll](jekyllrb.com) and created as part of [Udacity.com's](http://udacity.com) nanodegree site . Instead of using a database and serving pages dynamically. It builds several static pages locally before you deploy. This works great for small projects. The idea is that you don't really need a database for every site. I wrote the code with intention of expanding it into a framework for more static sites.  Contact me if you'd like to help.
 
 ### Dependencies
--Python 2.7
--PyYaml
+- Python 2.7
+- PyYaml
+- internet connection
 
-#story - 
-	A user wants to upload some more movies
-	they go into the directory and run .. something
+### Viewing the site
 
-	The site says "What would you like to do?"
+1. requires python 2.7 and yaml  [PyYaml](http://pyyaml.org/wiki/PyYAML)
 
-	Buid the site? build
+2. To run the site cd to the main director of the site and enter `python tomatoes.py`
 
-	get omdb update for current movies:
-		update
-	Add a movie? 
-		add
-	Edit Current movies? 
-		edit
+3. To add a movie type `add` and follow the prompts. 
 
+4. To see the site type `serve` and the site should be running at localhost:8000
 
+### How this works
 
-	User types in add
+When you add a site in the command line. The program contacts the (Open movie database api)[http://www.omdbapi.com/] and searches for your movie by title.  If your movie is in the results, the program makes another call to the omdb and gets a complete set of data(except for the youtube trailer url). If not, saves the information that you enter manually.  If you want to add more fields, you'll have to change the details in `data/movies/data.yml`
 
-	"Enter the title:""
+### Making changes
 
-
-	"user enters title"
-
-	" it returns a list "(only type movie)
-	"is this your movie?"
-		no
-	"shows next"
-		yes
-	"What is the youtube url for the trailer you want to add?"
-		enters blank
-	"Can't be blank"
-		enters "boo"
-	"Must be in http format"
-		enters "http://sdfasf.com"
-	Thank you? 
-		add another
-		build
-		main menu
-		exit
+- assets are specified in `templates/application/header.yml`
+- local css files should be changed in `assets/css/`
+- local scripts should be changed in `assets/script`
+  DO Not try and make changes to the file in the public folder. This is build automatically when the site 
+  is built. All your changes will be lost the next time the site is built
 
 
-
-
-
-
-1. requires yaml .. install via pip PyYaml
-An example of the page is running at ...
-
-2. Update movies calls the omdb database and updates the data in the yaml file
-
-
-Command line:
-
-Add a movie,
-Delete a movie
-Run the server
-update all movies
-build
-
-should I use gulp to minifiy?
-
-Build
-
-to enter more movies do
-
-update ratings
-
-view index.html
-
-This will use the open database
-
-How to run tests
-
-How to contribute
+- Movie information is stored and saved in `data/movies/data.yml` you can make updates and deletions and they will be reflected in the site when it is rebuilt.
 

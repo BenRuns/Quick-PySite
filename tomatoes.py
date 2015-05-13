@@ -32,13 +32,6 @@ def start_server(port=8000 ):
 
 
 
-def update_movies():
-    pass
-
-def edit_movie():
-    pass
-
-
 def add_movie():
     movie_data = {}
     while True:
@@ -73,8 +66,6 @@ def add_movie():
 
 
 choices = {'serve': start_server, 
-           'update':update_movies,
-           'edit':edit_movie,
            'add': add_movie }
 
 def redirect():
@@ -84,17 +75,12 @@ def redirect():
 What would you like to do?"
 
   Go to the site?  --  enter   "serve"
-
-  Refresh current movies 
-  data through omdb? ---  enter "update"  
-
   Add a movie?   --- enter "add"
-  Edit a current movies? -- enter "edit"
             """
     while choosing:
         try:
             choice = raw_input('Enter Choice: ')
-            action = choices[choice]
+            action = choices[choice.strip()]
             choosing = False
 
         except KeyError:
