@@ -1,10 +1,11 @@
-import fresh_tomatoes 
-from models.movie import * 
+import fresh_tomatoes
+from models.movie import *
 from lib.site import *
 import os
 import SimpleHTTPServer
 import SocketServer
 import webbrowser
+
 
 def load_manifest(path_to_file):
     config_file = open(path_to_file)
@@ -15,21 +16,18 @@ def load_manifest(path_to_file):
 SITE = Website(**load_manifest('manifest.yml'))
 
 
-def start_server(port=8000 ):
+def start_server(port=8000):
     SITE.build_all()
-    PORT = port 
+    PORT = port
     Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
     httpd = SocketServer.TCPServer(("", PORT), Handler)
 
-
     path = "./public/"
-    os.chdir( path )
-
+    os.chdir(path)
 
     print "serving at port", PORT
-    webbrowser.open('http://localhost:' + str(PORT) )
+    webbrowser.open('http://localhost:' + str(PORT))
     httpd.serve_forever()
-
 
 
 def add_movie():
@@ -41,8 +39,8 @@ def add_movie():
         else:
             break
     results = Movie.search_omdb_by_title(movie_data['title'])
-    choice  = Movie.choose_from_results(results)
-    if choice == None:
+    choice = Movie.choose_from_results(results)
+    if choice is None:
         while True:
             movie_data['poster_url'] = raw_input('Enter a poster url: ')
             if len(movie_data['poster_url'].strip()) == 0:
@@ -52,7 +50,8 @@ def add_movie():
     else:
         movie_data['imdbID'] = choice['imdbID']
     while True:
-        movie_data['trailer_youtube_url'] = raw_input('Enter a url from youtube for the trailer: ')
+        movie_data['trailer_youtube_url'] = raw_input(
+            'Enter a url from youtube for the trailer: ')
         if len(movie_data['trailer_youtube_url'].strip()) == 0:
             print "youtube url can't be blank"
         else:
@@ -62,11 +61,9 @@ def add_movie():
     redirect()
 
 
+choices = {'serve': start_server,
+           'add': add_movie}
 
-
-
-choices = {'serve': start_server, 
-           'add': add_movie }
 
 def redirect():
     choosing = True
@@ -89,37 +86,4 @@ What would you like to do?"
             pass
     action()
 
-
 redirect()
-
-#story - 
-    # A user wants to upload some more movies
-    # they go into the directory and run .. something
-
-
-
-    # User types in add
-
-
-    # " it returns a list "(only type movie)
-    # "is this your movie?"
-    #   no
-    # "shows next"
-    #   yes
-    # "What is the youtube url for the trailer you want to add?"
-    #   enters blank
-    # "Can't be blank"
-    #   enters "boo"
-    # "Must be in http format"
-    #   enters "http://sdfasf.com"
-    # Thank you? 
-    #   add another
-    #   build
-    #   main menu
-    #   exit
-
-
-
-
-# #Server info
-
