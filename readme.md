@@ -2,7 +2,7 @@
 
 ### Quick PySite
 
-This was inspired by the blogging platform [jekyll](jekyllrb.com) and created as part of [Udacity.com's](http://udacity.com) nanodegree site . Instead of using a database and serving pages dynamically. It builds several static pages locally before you deploy. This works great for small projects. The idea is that you don't really need a database for every site. I wrote the code with intention of expanding it into a framework for more static sites.  Contact me if you'd like to help.
+This was inspired by the blogging platform [jekyll](jekyllrb.com) and created as part of [Udacity.com's](http://udacity.com) nanodegree projects . Instead of using a database and serving pages dynamically. It builds several static pages locally before you deploy. This works great for small projects. The idea is that you don't really need a database for every site. I wrote the code with intention of expanding it into a framework for more static sites.  Contact me if you'd like to help.
 
 ### Dependencies
 - Python 2.7
