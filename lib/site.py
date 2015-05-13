@@ -110,7 +110,6 @@ class Website:
     def build_head(self,template):
         outline = """
         <head>
-            <base href="~/public/movies/">
             <meta charset="utf-8">
             {data}
 
