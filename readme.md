@@ -13,7 +13,7 @@ This was inspired by the blogging platform [jekyll](jekyllrb.com) and created as
 
 1. requires python 2.7 and yaml  [PyYaml](http://pyyaml.org/wiki/PyYAML)
 
-2. To run the site cd to the main director of the site and enter `python tomatoes.py`
+2. To run the site, cd to the main directory of the site and enter `python tomatoes.py`
 
 3. To add a movie type `add` and follow the prompts. 
 
