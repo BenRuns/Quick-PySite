@@ -26,8 +26,8 @@ When you add a site in the command line. The program contacts the [Open movie da
 ### Making changes
 
 - assets are specified in `templates/application/header.yml`
-- local css files should be changed in `assets/css/`
-- local scripts should be changed in `assets/script`
+- css files should be changed in `assets/css/`
+- js scripts should be changed in `assets/script`
   DO Not try and make changes to the file in the public folder. This is build automatically when the site 
   is built. All your changes will be lost the next time the site is built
 
