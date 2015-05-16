@@ -1,4 +1,4 @@
-import fresh_tomatoes
+
 from models.movie import *
 from lib.site import *
 import os
